@@ -6,6 +6,9 @@ import cors from "cors";
 import { log } from "node:console";
 import { connectToSocket } from "./controllers/socketManager.js";
 import userRoutes from "./routes/users.routes.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const server = createServer(app);
@@ -18,9 +21,7 @@ app.use(express.urlencoded({ limit: "40kb", extended: true })); // Parses URL-en
 app.use("/api/v1/users", userRoutes);
 
 const start = async () => {
-  const connectionDb = await mongoose.connect(
-    "mongodb+srv://arinsharma:manu0004@cluster0.ytueflu.mongodb.net/"
-  );
+  const connectionDb = await mongoose.connect(process.env.MONGO_URI);
   console.log(`Mongo DB connection host ${connectionDb.connection.host}`);
 
   server.listen(8000, () => {
