@@ -25,7 +25,7 @@ const start = async () => {
   console.log(`Mongo DB connection host ${connectionDb.connection.host}`);
 
   server.listen(8000, () => {
-    console.log("App is listening at port", 8000);
+    console.log(`App is listening at port ${PORT}`);
   });
 };
 
