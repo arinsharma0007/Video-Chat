@@ -1,7 +1,6 @@
-let IS_PROD = false;
-
-const server = IS_PROD
-  ? "https://videochatbackend-qbpq.onrender.com"
-  : "http://localhost:8000";
+const server =
+  window.location.hostname === "localhost"
+    ? "http://localhost:8000"
+    : "https://videochatbackend-qbpq.onrender.com";
 
 export default server;
